@@ -1,18 +1,13 @@
 import { useState } from 'react';
 import TaskForm from '../TaskForm/TaskForm';
+import Column from '../Column/Column'
 import './App.scss';
-
-interface Tasks {
-  id: number,
-  todo: string,
-  completed: boolean
-}
-
+import { Task } from '../interfaces'
 
 const App = () => {
-  const [tasks, updateTask] = useState<Tasks[]>([]);
+  const [tasks, updateTask] = useState<Task[]>([]);
 
-  const addTask = (task: Tasks) => {
+  const addTask = (task: Task) => {
     updateTask([...tasks, task])
   }
 
@@ -23,7 +18,10 @@ const App = () => {
         <TaskForm addTask={addTask} />
       </header>
       <main>
-
+        <Column taskData={tasks} />
+        <Column taskData={[]} />
+        <Column taskData={[]} />
+        <Column taskData={[]} />
       </main>
     </div>
   );
