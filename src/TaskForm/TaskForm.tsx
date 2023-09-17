@@ -1,4 +1,5 @@
 import { useState, MouseEvent } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const TaskForm = ({ addTask } : { addTask: Function }) => {
   const [task, setTask] = useState<string>('');
@@ -6,7 +7,7 @@ const TaskForm = ({ addTask } : { addTask: Function }) => {
 
   const createTask = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    addTask({ id: 1, task, description})
+    addTask({ id: uuidv4(), task, description, completed: false })
     setTask('');
     setDescription('');
   }
